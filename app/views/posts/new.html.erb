@@ -1,0 +1,17 @@
+<h2>Create New Post</h2>
+
+<% if @post.errors %>
+    <% @post.errors.full_messages.each do |error|%>
+        <%= error %>
+    <% end %>
+<% end %>
+
+<%= form_with model:@post do |form|%>
+    <div class="form-row">
+        <label for="content">Content: </label>
+        <%= form.text_area :content %>
+    </div>
+    <div class="form-row">
+        <%= form.submit "Create"%>
+    </div>
+<% end %>

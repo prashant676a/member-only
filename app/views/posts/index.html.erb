@@ -1,0 +1,23 @@
+<h2>Posts</h2>
+
+<% if user_signed_in? %>
+  <%# if users are signed in. %>
+  <% @posts.each do |post| %>
+    <p><%= post.content %></p>
+    <p>Author: <%= current_user.email %></p>
+    <hr>
+  <% end %>
+  <%= link_to 'Post', new_post_path %>
+
+  <br>
+  <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
+
+<% else %>
+  <%# if users are not signed in. %>
+  <% @posts.each do |post| %>
+    <p><%= post.content %></p>
+    <hr>
+  <% end %>
+  <br>
+  <%= link_to 'Sign in', new_user_session_path %>
+<% end %>
